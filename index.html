@@ -1,171 +1,110 @@
 <!DOCTYPE HTML>
-<!--
-	Alpha by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>ayotalksmusic</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-			/* Add your custom CSS styles here */
-			#recentAlbumReviews .grid-item {
-				width: calc(25% - 20px);
-				margin: 10px;
-				padding: 20px;
-				background: #fff;
-				border-radius: 8px;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>ayotalksmusic</title>
+    <link rel="icon" type="image/jpg" href="images/myfavicon.jpg">
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="landing is-preload">
+    <div id="page-wrapper">
 
-			#recentAlbumReviews .grid-item h3 {
-				margin-bottom: 10px;
-				font-size: 18px;
-			}
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">ayotalksmusic</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="albumlog.html">Reviews</a></li>
+                    <li><a href="albumlog.html">Amazeballs</a></li>
+                    <li>
+                        <a href="#" class="icon solid fa-angle-down">Layouts</a>
+                        <ul>
+                            <li><a href="generic.html">Generic</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="elements.html">Elements</a></li>
+                            <li>
+                                <a href="#">Submenu</a>
+                                <ul>
+                                    <li><a href="#">Option One</a></li>
+                                    <li><a href="#">Option Two</a></li>
+                                    <li><a href="#">Option Three</a></li>
+                                    <li><a href="#">Option Four</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="albumlog.html" class="button">Album Log</a></li>
+                </ul>
+            </nav>
+        </header>
 
-			#recentAlbumReviews .grid-item p {
-				font-size: 14px;
-				color: #666;
-			}
+        <!-- Banner -->
+        <section id="banner">
+            <h2>ayotalksmusic</h2>
+            <p>MUSIC ENTHUSIAST!!! Since my opinions are the only ones that matter in our world🥶🥶🥶</p>
+            <ul class="actions special">
+                <li><a href="albumlog.html" class="button primary">Album Log</a></li>
+            </ul>
+        </section>
 
-			#recentAlbumReviews .grid-item a {
-				display: block;
-				margin-top: 10px;
-				text-decoration: none;
-				color: #007bff;
-				font-weight: bold;
-			}
+        <!-- Main -->
+        <section id="main" class="container">
 
-			#recentAlbumReviews .grid-item a:hover {
-				text-decoration: underline;
-			}
-		</style>
-	</head>
-	<body class="landing is-preload">
-		<div id="page-wrapper">
+            <!-- Album of the Day -->
+            <section class="box special" id="albumOfTheDay">
+                <header class="major">
+                    <h2>Album of the Day</h2>
+                </header>
+                <div class="album-card">
+                    <!-- Random Album Details will be inserted here -->
+                    <img src="path/to/album-cover.jpg" alt="Album Cover" />
+                    <h3>Album Title</h3>
+                    <p>Artist Name</p>
+                    <p>Short description or review.</p>
+                </div>
+            </section>
 
-			<!-- Header -->
-				<header id="header" class="alt">
-					<h1><a href="index.html">ayotalksmusic</a> by HTML5 UP</h1>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="albumlog.html">Album List</a></li>
-							<li>
-								<a href="#" class="icon solid fa-angle-down">Layouts</a>
-								<ul>
-									<li><a href="generic.html">Generic</a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<li><a href="elements.html">Elements</a></li>
-									<li>
-										<a href="#">Submenu</a>
-										<ul>
-											<li><a href="#">Option One</a></li>
-											<li><a href="#">Option Two</a></li>
-											<li><a href="#">Option Three</a></li>
-											<li><a href="#">Option Four</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li><a href="albumlog.html" class="button">Album Log</a></li>
-						</ul>
-					</nav>
-				</header>
+            <!-- Recent Album Reviews -->
+            <section class="box special" id="recentAlbumReviews">
+                <header class="major">
+                    <h2>Recent Album Reviews</h2>
+                </header>
+                <div class="row">
+                    <!-- Album Cards will be inserted here dynamically -->
+                </div>
+            </section>
 
-			<!-- Banner -->
-				<section id="banner">
-					<h2>ayotalksmusic</h2>
-					<p>MUSIC ENTHUSIAST!!! Since my opinions are the only ones that matter in our world🥶🥶🥶</p>
-					<ul class="actions special">
-						<li><a href="albumlog.html" class="button primary">Album Log</a></li>
-					</ul>
-				</section>
+        </section>
 
-			<!-- Main -->
-				<section id="main" class="container">
-					
-					<!-- Recent Album Reviews -->
-					<section class="box special" id="recentAlbumReviews">
-						<header class="major">
-							<h2>Recent Album Reviews</h2>
-						</header>
-						<div class="row">
-							<!-- Album Cards will be inserted here dynamically -->
-						</div>
-					</section>
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </footer>
 
-					<!-- Remaining content as it is -->
+    </div>
 
-				</section>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="updateAlbumReviews.js"></script>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-						<li><a href="#" class="icon brands fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</footer>
-
-			</div>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			// Fetch album data from albumlog.html
-			fetch('albumlog.html')
-				.then(response => response.text())
-				.then(html => {
-					const parser = new DOMParser();
-					const doc = parser.parseFromString(html, 'text/html');
-		
-					// Get the album list
-					const albumList = doc.getElementById('albumList');
-					const albums = Array.from(albumList.children);
-		
-					// Convert the albums data to an array
-					const albumData = albums.map(album => {
-						return {
-							name: album.querySelector('h2').innerText,
-							link: album.querySelector('a').getAttribute('href')
-						};
-					});
-		
-					// Sort albums by date (you might need to add a date field to each album)
-					albumData.sort((a, b) => new Date(b.date) - new Date(a.date));
-		
-					// Get the most recent 4 albums
-					const recentAlbums = albumData.slice(0, 4);
-		
-					// Create HTML elements for each recent album
-					const albumGrid = document.getElementById('recentAlbumReviews').querySelector('.row');
-					recentAlbums.forEach(album => {
-						const listItem = document.createElement('div');
-						listItem.classList.add('grid-item'); // Add CSS class for styling
-						listItem.innerHTML = `
-							<h3>${album.name}</h3>
-							<a href="${album.link}" class="button primary">View Album</a>
-						`;
-						albumGrid.appendChild(listItem);
-					});
-				})
-				.catch(error => console.error('Error fetching album data:', error));
-		</script>
-	</body>
+</body>
 </html>
