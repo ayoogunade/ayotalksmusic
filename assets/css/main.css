@@ -11,23 +11,37 @@
 }
 
 /* Reset margin and padding for all elements */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/*For the 4x4 Recent Albums In H.P*/
-.album-image { 
+
+/* Optional: Adjust header styles for consistent height */
+header.major {
+    margin: 0; /* Remove default margin */
+    padding: 20px 0; /* Add some vertical padding */
+    text-align: center; /* Center the text */
+}
+
+/* For the 4x4 Recent Albums In H.P */
+.album-image {
     width: 90%; /* Make the image responsive */
     height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Optional: for rounded corners */
     margin-bottom: 10px; /* Space between image and text */
 }
 
-/*For the Album of the day In H.P*/
+/* Flex container for alignment */
+.flex-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between sections */
+    align-items: flex-start; /* Align items at the start (top) */
+}
+
+/* For the Album of the Day In H.P */
 #albumOfTheDay {
-	background-color: white; /* Adjust background color */
+    background-color: white; /* Adjust background color */
     color: black; /* Text color */
     padding: 20px; /* Padding around the section */
     border-radius: 8px; /* Rounded corners */
@@ -35,30 +49,44 @@
     margin-bottom: 20px; /* Space below section */
 }
 
-/*For the Album of the day(picture plus words) In H.P*/
+/* For the Album of the Day (picture plus words) In H.P */
 .album-card {
     display: flex;
     flex-direction: column; /* Stack image and text vertically */
-    align-items:center; /* Center items */
+    align-items: center; /* Center items */
     margin: 0 auto; /* Center the card */
 }
-/*For the Album of the day Image In H.P*/
+
+/* For the Album of the Day Image In H.P */
 .album-card img {
     width: 100%; /* Responsive image */
     max-width: 300px; /* Limit max width */
     border-radius: 8px; /* Rounded corners for images */
 }
-/*For the Album of the day Title In H.P*/
+
+/* For the Album of the Day Title In H.P */
 .album-card h3 {
     margin: 10px 0; /* Space above and below title */
     font-size: 1.5rem; /* Adjust title font size */
-	color: black; /* Lighter text color */
+    color: black; /* Lighter text color */
 }
-/*For the Album of the day little word In H.P*/
+
+/* For the Album of the Day little word In H.P */
 .album-card p {
     font-size: 1rem; /* Adjust description font size */
     color: black; /* Lighter text color */
 }
+
+/* Check out this Random Album section */
+#randomAlbum {
+    background-color: white; /* Adjust background color */
+    color: black; /* Text color */
+    padding: 20px; /* Padding around the section */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center text */
+    margin-bottom: 20px; /* Space below section */
+}
+
 /* Body styling */
 body {
     line-height: 1; /* Sets line height */
@@ -113,6 +141,7 @@ body {
     margin-bottom: 20px; /* Space below search container */
     padding-left: 10px; /* Space on the left */
 }
+
 
 /* Search input styling */
 #searchInput {
