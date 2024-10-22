@@ -156,7 +156,7 @@ body {
 
 /* Search input styling */
 #searchInput {
-    width: 70%; /* Width of the input */
+    width: 100%; /* Width of the input */
     max-width: 2000px; /* Maximum width */
     padding: 10px; /* Padding inside input */
     font-size: 18px; /* Font size */
@@ -184,7 +184,7 @@ h3 {
     flex-wrap: wrap; /* Allow items to wrap */
     box-sizing: border-box; /* Ensures proper sizing */
     align-items: stretch; /* Stretches items to fill container */
-	justify-content: space-between; /* Add space between items */
+	justify-content:space-between; /* Add space between items */
 }
 
 /* Box sizing for children of row */
@@ -479,9 +479,11 @@ h3 {
 			margin: 0 0 2em 0;
 			padding: 0 !important;
 		}
-
+/*For Controlling each box container in the 4x4 Recent Albums*/
 		.box.special {
 			text-align: center;
+			font-size: small;
+			
 		}
 
 /* Icon */
