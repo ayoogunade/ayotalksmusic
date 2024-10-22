@@ -99,12 +99,22 @@ body {
     letter-spacing: -0.015em; /* Spacing between letters */
 }
 
-/* Album grid layout */
+/* Ensuring there's enough padding for the album grid */
 .album-grid {
     display: grid; /* Using grid layout */
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive columns */
     grid-gap: 30px; /* Space between grid items */
+    margin-top: 140px; /* Adjust this value based on the height of your top bar */
 }
+/*Albumlog's topbar*/
+.topbar_albumlog {
+    background-color: #C9CAD9;
+    position: fixed; /* Makes the top bar fixed */
+    width: 100%; /* Full width */
+    top: 0; /* Aligns to the top of the page */
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
 
 /* Individual album item styling */
 .album-item {
@@ -141,6 +151,7 @@ body {
     margin-bottom: 20px; /* Space below search container */
     padding-left: 10px; /* Space on the left */
 }
+
 
 
 /* Search input styling */
@@ -1033,7 +1044,8 @@ h3 {
 			#banner input[type="button"].primary,
 			#banner .button.primary {
 				background: #fff;
-				color: #666 !important;
+				color: red !important;
+				font-weight: 2000;
 			}
 
 /* Main */
