@@ -98,14 +98,6 @@ body {
     font-weight: 300; /* Font weight */
     letter-spacing: -0.015em; /* Spacing between letters */
 }
-
-/* Ensuring there's enough padding for the album grid */
-.album-grid {
-    display: grid; /* Using grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive columns */
-    grid-gap: 30px; /* Space between grid items */
-    margin-top: 140px; /* Adjust this value based on the height of your top bar */
-}
 /*Albumlog's topbar*/
 .topbar_albumlog {
     background-color: #C9CAD9;
@@ -115,10 +107,21 @@ body {
     z-index: 1000; /* Ensures it stays above other elements */
 }
 
+/* Ensuring there's enough padding for the album grid */
+.album-grid {
+    display: grid; /* Using grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive columns */
+    grid-gap: 30px; /* Space between grid items */
+    margin-top: 160px; /* Adjust this value based on the height of your top bar */
+	
+}
+
+
 
 /* Individual album item styling */
 .album-item {
     font-family: "Source Sans Pro", sans-serif; /* Font for album items */
+	text-decoration: none;
     display: flex; /* Using flexbox */
     flex-direction: column; /* Align children vertically */
     align-items: center; /* Center items */
@@ -130,6 +133,7 @@ body {
 .album-item img {
     max-width: 100%; /* Ensures responsive images */
     height: auto; /* Maintains aspect ratio */
+	text-decoration: dotted;
 }
 
 /* Hover effect for album items */
@@ -190,6 +194,7 @@ h3 {
 /* Box sizing for children of row */
 .row > * {
     box-sizing: border-box; /* Ensures proper sizing */
+	padding: 0 1em; /* Adjust padding for better spacing */
 }
 
 /* Column styling */
@@ -296,6 +301,7 @@ h3 {
 		}
 
 		@media screen and (max-width: 736px) {
+			
 
 			.row {
 				display: flex;
@@ -320,6 +326,7 @@ h3 {
 		}
 
 		@media screen and (max-width: 480px) {
+			
 
 			.row {
 				display: flex;
@@ -364,6 +371,7 @@ h3 {
 			.container {
 				max-width: 100%;
 			}
+			
 
 		}
 
@@ -842,12 +850,13 @@ h3 {
 			}
 
 		#header nav {
-			height: inherit;
-			line-height: inherit;
-			position: absolute;
-			right: 0.75em;
-			top: 0;
-			vertical-align:bottom;
+			display: flex;
+    		justify-content: flex-end;
+    		align-items: center;
+    		height: inherit;
+    		line-height: inherit;
+    		padding-right: 1em; /* Adjust spacing as needed */
+    		position:sticky;
 		}
 
 			#header nav > ul {
@@ -862,7 +871,7 @@ h3 {
 				}
 
 					#header nav > ul > li > ul {
-						display: none;
+						display: none;padding: 0 1em; /* Adjust padding for better spacing */
 					}
 
 					#header nav > ul > li a {
@@ -1212,7 +1221,7 @@ h3 {
 			}
 
 			#header {
-				display: none;
+				display:none;
 			}
 
 		/* Banner */
@@ -1232,6 +1241,7 @@ h3 {
 	@media screen and (max-width: 736px) {
 
 		/* Basic */
+		
 
 			body, input {
 				font-size: 11pt;
@@ -1246,6 +1256,7 @@ h3 {
 			h3 {
 				font-size: 1.5em;
 			}
+			
 
 		/* Section/Article */
 
@@ -1323,6 +1334,7 @@ h3 {
 /* Mobile (Portrait) */
 
 	@media screen and (max-width: 480px) {
+		
 
 		/* Basic */
 
@@ -1331,14 +1343,54 @@ h3 {
 			}
 
 			body, input {
-				font-size: 11pt;
+				font-size: 16pt;
+				text-align: center;
 			}
+
+			/* Nav Bar */
+			nav {
+				background-color: #555555; /* Change to a color that contrasts well with your text */
+				color: white; /* Text color for visibility */
+				position: fixed; /* Fixes the nav bar to the top of the viewport */
+				top: 0; /* Aligns the nav bar to the top */
+				left: 0; /* Aligns the nav bar to the left */
+				width: 100%; /* Ensures it stretches across the full width */
+				z-index: 1000; /* Places the nav above other content */
+				box-shadow: 0 2px 5px rgba(127, 232, 13, 0.2); /* Adds a subtle shadow for depth */
+				padding: 10px 0; /* Adds vertical padding for spacing */
+				transition: background-color 0.3s; /* Smooth transition for background color changes */
+				text-decoration: none;
+			}
+		
+			nav ul {
+				display: flex; /* Use flexbox for horizontal layout */
+				justify-content: space-around; /* Space items evenly */
+				list-style: none; /* Remove bullet points */
+				margin: 0; /* Reset margin */
+				padding: 0; /* Reset padding */
+
+				
+			}
+		
+			nav a {
+				color: white; /* Set the text color */
+				text-decoration: none; /* Remove underline */
+				padding: 5px; /* Space around the links */
+				
+
+			}
+			
+			
+
+		
 
 		/* Section/Article */
 
 			header.major {
 				padding: 0;
+
 			}
+			
 
 		/* List */
 
@@ -1348,7 +1400,7 @@ h3 {
 
 				ul.actions li {
 					display: block;
-					padding: 1em 0 0 0;
+					padding: 1em 1em 0 0;
 					text-align: center;
 					width: 100%;
 				}
@@ -1372,13 +1424,13 @@ h3 {
 				border-radius: 0;
 				box-shadow: none;
 				margin: 1em 0 0 0;
-				padding: 3em 1em !important;
+				padding: 2em 1em !important;
 			}
 
 		/* Banner */
 
 			#banner {
-				padding: 5em 3em 4em 3em;
+				padding: 2em 1em;
 			}
 
 		/* Main */
