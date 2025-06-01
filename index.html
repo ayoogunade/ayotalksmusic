@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C4XTRCGSS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7C4XTRCGSS');
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>ayotalksmusic</title>
+    <link rel="icon" type="image/jpg" href="images/myfavicon.jpg">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* Custom styling for horizontal layout */
+        #album-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2em;
+        }
+        #albumOfTheDay, #randomAlbum {
+            width: 48%;
+            box-sizing: border-box;
+        }
+        .album-card img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="landing is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">ayotalksmusic</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="albumlog.html" class="button">Album Reviews</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Banner -->
+        <section id="banner">
+            <h2>ayotalksmusic</h2>
+            <ul class="actions special">
+                <li><a href="albumlog.html" class="button primary"> Album Reviews</a></li>
+                <li><a href="albumlog.html" class="button primary"> Album Log</a></li>
+            </ul>
+        </section>
+
+        <!-- Main -->
+        <section id="main" class="container">
+
+            <!-- Horizontal Album Section -->
+            <section id="album-section">
+                
+                <!-- Album of the Day -->
+                <section class="box special" id="albumOfTheDay">
+                    <header class="major">
+                        <h2>Album of the Day</h2>
+                    </header>
+                    <div class="album-card">
+                        <!-- Album of the Day details will be inserted here -->
+                    </div>
+                </section>
+
+                <!-- Random Album -->
+                <section class="box special" id="randomAlbum">
+                    <header class="major">
+                        <h6>Check out this Random Album</h6>
+                    </header>
+                    <div class="album-card">
+                        <!-- Random Album details will be inserted here -->
+                    </div>
+                </section>
+
+            </section>
+
+            <!-- Recent Album Reviews -->
+            <section class="box special" id="recentAlbumReviews" >
+                <header class="major">
+                    <h2>Recent Album Reviews</h2>
+                </header>
+                <div class="row">
+                    <!-- Recent Album Cards will be inserted here dynamically -->
+                </div>
+            </section>
+
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="https://www.instagram.com/ayotalksmusic/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://github.com/ayoogunade?tab=repositories" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; ayotalksmusic. All rights reserved I guess?</li>
+            </ul>
+            <br>
+            <a href="https://forms.gle/7QPSzq47WojKypHz6" target="_blank" class="button primary"> 🎵✉️✉️✉️ ⬇️</a>
+            <!-- Form for music recommendations -->
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="updateAlbumReviews.js"></script>
+</body>
+</html>
