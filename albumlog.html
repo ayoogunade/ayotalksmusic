@@ -1,67 +1,86 @@
 <!--albumlog.html-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7C4XTRCGSS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7C4XTRCGSS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag('config', 'G-7C4XTRCGSS');
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Album Log</title>
-  <link rel="icon" type="image.jpg" href="images/myfavicon.jpg">
-  <link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body>
-  <div class="topbar_albumlog"> 
-    <div class="header">
-      <h1>Album Log</h1>
-      <a href="index.html"><button onclick="doSomething()">Back to Homepage</button></a>
+      gtag("config", "G-7C4XTRCGSS");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Log</title>
+    <link rel="icon" type="image.jpg" href="images/myfavicon.jpg" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <div class="topbar_albumlog">
+      <div class="header">
+        <h1>Album Log</h1>
+        <a href="index.html"
+          ><button onclick="doSomething()">Back to Homepage</button></a
+        >
+      </div>
+
+      <!-- Search bar container -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for an album..."
+        />
+      </div>
     </div>
 
-    <!-- Search bar container -->
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search for an album..." />
-    </div>
-  </div>
+    <!-- Dynamic grid -->
+    <div class="album-grid" id="albumGrid"></div>
+    <script>
+      const albumGrid = document.getElementById("albumGrid");
 
-  <!-- Dynamic grid -->
-  <div class="album-grid" id="albumGrid"></div>
-  <script>
-    const albumGrid = document.getElementById('albumGrid');
-  
-    // Fetch albums from the JSON file
-    fetch('albums.json')
-      .then(response => response.json())
-      .then(albums => {
-        // Function to generate albums based on the search term
-        function generateAlbums(searchTerm = '') {
-          const filteredAlbums = albums.filter(album => album.name.toLowerCase().includes(searchTerm.toLowerCase()));
-          const albumsHTML = filteredAlbums.map(album => `
+      // Fetch albums from the JSON file
+      fetch("albums.json")
+        .then((response) => response.json())
+        .then((albums) => {
+          // Function to generate albums based on the search term
+          function generateAlbums(searchTerm = "") {
+            const filteredAlbums = albums.filter((album) =>
+              album.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            const albumsHTML = filteredAlbums
+              .map(
+                (album) => `
             <div class="album-item">
               <a href="${album.link}" target="_blank">
                 <img src="${album.image}" alt="${album.name}">
                 <span>${album.name}</span>
               </a>
             </div>
-          `).join('');
-          albumGrid.innerHTML = albumsHTML;
-        }
-  
-        // Call the function on page load
-        generateAlbums();
-  
-        // Bind the search input event listener
-        document.getElementById('searchInput').addEventListener('input', (event) => {
-          generateAlbums(event.target.value);
-        });
-      })
-      .catch(error => console.error('Error loading albums:', error));
-  </script>
-</body>
+          `
+              )
+              .join("");
+            albumGrid.innerHTML = albumsHTML;
+          }
+
+          // Call the function on page load
+          generateAlbums();
+
+          // Bind the search input event listener
+          document
+            .getElementById("searchInput")
+            .addEventListener("input", (event) => {
+              generateAlbums(event.target.value);
+            });
+        })
+        .catch((error) => console.error("Error loading albums:", error));
+    </script>
+  </body>
 </html>
