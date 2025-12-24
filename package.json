@@ -1,14 +1,25 @@
 {
   "name": "ayotalksmusic",
   "version": "1.0.0",
+  "type": "module",
   "main": "updateAlbumReviews.js",
   "scripts": {
-    "build:css": "postcss assets/css/main.css -o dist/main.css"
+    "build:css": "postcss assets/css/main.css -o dist/main.css",
+    "add-album": "node addAlbum.js",
+    "quick-add": "node quickAdd.js",
+    "batch-add": "node batchAdd.js",
+    "sync": "node syncFromInstagram.js",
+    "sync:preview": "node syncFromInstagram.js --dry-run",
+    "sync:comments": "node syncFromInstagram.js --comments",
+    "scrape": "node instagramScraper.js",
+    "instagram-setup": "node instagramSync.js --setup",
+    "instagram-sync": "node instagramSync.js --sync",
+    "instagram-preview": "node instagramSync.js --dry-run"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["music", "reviews", "instagram", "albums", "automation"],
+  "author": "ayotalksmusic",
   "license": "ISC",
-  "description": "",
+  "description": "Music review website with automated Instagram integration",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "autoprefixer": "^10.4.20",
