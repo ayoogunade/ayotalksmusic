@@ -59,6 +59,18 @@ async function quickAdd() {
     // Clean up the path (remove quotes if dragged/dropped)
     const cleanPath = imagePath.trim().replace(/^["']|["']$/g, '');
 
+    // Get genre (optional)
+    console.log('\nGenre (optional):');
+    console.log('  Options: Hip-Hop, Pop, R&B, Rock, Electronic, Jazz, Country, K-Pop');
+    console.log('  You can enter multiple separated by commas (e.g., "Hip-Hop, R&B")');
+    console.log('  Or press Enter to skip (auto-detection will be used)');
+    console.log('');
+
+    const genreInput = await question('Genre: ');
+    const genres = genreInput.trim()
+        ? genreInput.split(',').map(g => g.trim()).filter(g => g)
+        : null;
+
     // Confirm before adding
     console.log('\n📋 Review:');
     console.log(`  Album: #${nextNumber}. ${albumName}`);

@@ -120,11 +120,41 @@
       /* Fix album images being cut off at the top */
       .album-item img {
         object-fit: contain;
-        background-color: #f5f5f5;
+        background-color: beige;
       }
 
       body.dark-mode .album-item img {
         background-color: #16213e;
+      }
+
+      /* Reduce white space in album cards */
+      .album-item .album-info {
+        padding: 2px 8px !important;
+        min-height: auto !important;
+      }
+
+      /* Genre tags */
+      .genre-tags {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+
+      .genre-tag {
+        background: linear-gradient(135deg, var(--dark-blue), #1a3a57);
+        color: white;
+        padding: 0.25rem 0.6rem;
+        border-radius: 12px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      body.dark-mode .genre-tag {
+        background: linear-gradient(135deg, #4a9eff, #2a7bd4);
       }
 
       /* Update header to include toggle button */
@@ -140,6 +170,183 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+      }
+
+      /* Back to Top Button */
+      #backToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--dark-blue);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      #backToTop:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      #backToTop.show {
+        display: flex;
+      }
+
+      body.dark-mode #backToTop {
+        background: #4a9eff;
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+      }
+
+      body.dark-mode #backToTop:hover {
+        box-shadow: 0 6px 20px rgba(74, 158, 255, 0.5);
+      }
+
+      /* Sort dropdown styling */
+      .search-container {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      #sortSelect,
+      #genreFilter {
+        padding: 12px 15px;
+        font-size: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        background: white;
+        cursor: pointer;
+        min-width: 180px;
+        font-family: "Source Sans Pro", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      #sortSelect:hover,
+      #genreFilter:hover {
+        border-color: var(--dark-blue);
+      }
+
+      #sortSelect:focus,
+      #genreFilter:focus {
+        outline: none;
+        border-color: var(--dark-blue);
+        box-shadow: 0 0 0 3px rgba(37, 78, 112, 0.1);
+      }
+
+      body.dark-mode #sortSelect,
+      body.dark-mode #genreFilter {
+        background: #16213e;
+        color: #eaeaea;
+        border-color: #2a2a3e;
+      }
+
+      body.dark-mode #sortSelect:hover,
+      body.dark-mode #genreFilter:hover {
+        border-color: #4a9eff;
+      }
+
+      @media screen and (max-width: 600px) {
+        .search-container {
+          flex-direction: column;
+        }
+
+        #searchInput,
+        #sortSelect,
+        #genreFilter {
+          width: 100%;
+          max-width: none;
+        }
+      }
+
+      /* Share Buttons */
+      .share-buttons {
+        display: flex;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .album-item:hover .share-buttons {
+        opacity: 1;
+      }
+
+      .share-btn {
+        background: #f0f0f0;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #333;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .share-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .share-btn.copy-link:hover {
+        background: #4a9eff;
+        color: white;
+      }
+
+      .share-btn:has(.fa-instagram):hover {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        color: white;
+      }
+
+      body.dark-mode .share-btn {
+        background: #2a2a3e;
+        color: #eaeaea;
+      }
+
+      body.dark-mode .share-btn:hover {
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+      }
+
+      /* Toast notification for copy */
+      .toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .toast.show {
+        opacity: 1;
+      }
+
+      body.dark-mode .toast {
+        background: #4a9eff;
+        color: #1a1a2e;
       }
     </style>
   </head>
@@ -157,32 +364,109 @@
         </div>
       </div>
 
-      <!-- Search bar container -->
+      <!-- Search and filter container -->
       <div class="search-container">
         <input
           type="text"
           id="searchInput"
           placeholder="Search for an album..."
         />
+        <select id="sortSelect">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="name-asc">Album Name (A-Z)</option>
+          <option value="name-desc">Album Name (Z-A)</option>
+        </select>
+        <select id="genreFilter">
+          <option value="">All Genres</option>
+          <option value="Hip-Hop">Hip-Hop</option>
+          <option value="Pop">Pop</option>
+          <option value="R&B">R&B</option>
+          <option value="Rock">Rock</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Jazz">Jazz</option>
+          <option value="Country">Country</option>
+          <option value="K-Pop">K-Pop</option>
+        </select>
       </div>
     </div>
 
     <!-- Dynamic grid -->
     <div class="album-grid" id="albumGrid"></div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">Link copied to clipboard!</div>
+
     <script>
       const albumGrid = document.getElementById("albumGrid");
+
+      // Genre detection function
+      function detectGenres(albumName, caption = '') {
+        const text = (albumName + ' ' + caption).toLowerCase();
+        const genres = [];
+
+        // Genre keywords mapping
+        const genreMap = {
+          'Hip-Hop': ['hip hop', 'hip-hop', 'rap', 'kendrick', 'drake', 'eminem', 'j cole', 'tyler', 'kanye', 'jay-z', 'nas', 'tupac', 'biggie', 'joey badass', 'jid', 'freddie gibbs', 'pusha', 'asap', 'travis scott', 'playboi carti', 'lil wayne', 'future', 'migos', 'offset', 'quavo', 'chance', 'westside', 'denzel', 'earl sweatshirt', 'vince staples', 'schoolboy q', 'isaiah rashad', 'saba', 'noname', 'anderson paak', 'wiki', 'danny brown', 'madlib', 'mf doom', 'clipse', 'guevara', 'yeat', 'lil tecca'],
+          'Pop': ['pop', 'taylor swift', 'ariana', 'billie', 'dua lipa', 'harry styles', 'selena', 'justin bieber', 'justin timberlake', 'miley', 'katy perry', 'lady gaga', 'rihanna', 'beyonce', 'sabrina carpenter', 'doja cat'],
+          'R&B': ['r&b', 'rnb', 'soul', 'sza', 'frank ocean', 'the weeknd', 'bryson tiller', 'jhene', 'kehlani', 'summer walker', 'brent faiyaz', 'daniel caesar', 'partynextdoor', 'miguel', 'jorja smith', 'h.e.r', 'rochelle jordan'],
+          'Rock': ['rock', 'indie', 'alternative', 'punk', 'grunge', 'metal', 'guitar'],
+          'Electronic': ['electronic', 'edm', 'house', 'techno', 'dubstep', 'trap', 'synth'],
+          'Jazz': ['jazz', 'bebop', 'swing', 'saxophone', 'trumpet'],
+          'Country': ['country', 'folk', 'americana', 'morgan wallen'],
+          'K-Pop': ['kpop', 'k-pop', 'bts', 'blackpink', 'twice', 'exo']
+        };
+
+        // Check for genre matches
+        for (const [genre, keywords] of Object.entries(genreMap)) {
+          if (keywords.some(keyword => text.includes(keyword))) {
+            genres.push(genre);
+          }
+        }
+
+        // Limit to 2 genres max for cleaner display
+        return genres.slice(0, 2);
+      }
 
       // Fetch albums from the JSON file
       fetch("albums.json")
         .then((response) => response.json())
         .then((albums) => {
-          // Function to generate albums based on the search term
-          function generateAlbums(searchTerm = "") {
-            const filteredAlbums = albums.filter((album) =>
+          // Function to generate albums based on search term, sort option, and genre
+          function generateAlbums(searchTerm = "", sortOption = "newest", genreFilter = "") {
+            // Filter albums by search term
+            let filteredAlbums = albums.filter((album) =>
               album.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
+
+            // Filter by genre if selected
+            if (genreFilter) {
+              filteredAlbums = filteredAlbums.filter((album) => {
+                const albumGenres = detectGenres(album.name, album.caption);
+                return albumGenres.includes(genreFilter);
+              });
+            }
+
+            // Sort albums based on selected option
+            switch(sortOption) {
+              case 'newest':
+                filteredAlbums = filteredAlbums.reverse();
+                break;
+              case 'oldest':
+                // Already in oldest first order from JSON
+                break;
+              case 'name-asc':
+                filteredAlbums.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+              case 'name-desc':
+                filteredAlbums.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+            }
+
             const albumsHTML = filteredAlbums
-              .reverse() // Show newest albums first
               .map(
                 (album) => {
                   // Truncate caption for preview (first 100 chars)
@@ -190,16 +474,31 @@
                     ? album.caption.substring(0, 150) + (album.caption.length > 150 ? '...' : '')
                     : '';
 
+                  // Simple genre detection based on artist/album name
+                  const genres = detectGenres(album.name, album.caption);
+                  const genreTags = genres.length > 0
+                    ? `<div class="genre-tags">${genres.map(g => `<span class="genre-tag">${g}</span>`).join('')}</div>`
+                    : '';
+
                   return `
             <div class="album-item">
-              <a href="${album.link}" target="_blank">
+              <a href="${album.link}" target="_blank" class="album-link">
                 <img src="${album.image}" alt="${album.name}">
                 <div class="album-info">
                   <span class="album-name">${album.name}</span>
+                  ${genreTags}
                   ${captionPreview ? `<p class="album-caption">${captionPreview}</p>` : ''}
                   ${album.likes ? `<span class="album-stats">❤️ ${album.likes.toLocaleString()} likes</span>` : ''}
                 </div>
               </a>
+              <div class="share-buttons">
+                <button class="share-btn copy-link" data-link="${album.link}" title="Copy link">
+                  <i class="fas fa-link"></i>
+                </button>
+                <a href="${album.link}" target="_blank" class="share-btn" title="View on Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
             </div>
           `;
                 }
@@ -211,14 +510,48 @@
           // Call the function on page load
           generateAlbums();
 
-          // Bind the search input event listener
-          document
-            .getElementById("searchInput")
-            .addEventListener("input", (event) => {
-              generateAlbums(event.target.value);
-            });
+          // Bind event listeners for search, sort, and genre filter
+          const searchInput = document.getElementById("searchInput");
+          const sortSelect = document.getElementById("sortSelect");
+          const genreFilter = document.getElementById("genreFilter");
+
+          searchInput.addEventListener("input", (event) => {
+            generateAlbums(event.target.value, sortSelect.value, genreFilter.value);
+          });
+
+          sortSelect.addEventListener("change", (event) => {
+            generateAlbums(searchInput.value, event.target.value, genreFilter.value);
+          });
+
+          genreFilter.addEventListener("change", (event) => {
+            generateAlbums(searchInput.value, sortSelect.value, event.target.value);
+          });
+
+          // Handle share button clicks (using event delegation)
+          albumGrid.addEventListener('click', (e) => {
+            const copyBtn = e.target.closest('.copy-link');
+            if (copyBtn) {
+              e.preventDefault();
+              const link = copyBtn.dataset.link;
+
+              navigator.clipboard.writeText(link).then(() => {
+                showToast();
+              }).catch(err => {
+                console.error('Failed to copy:', err);
+              });
+            }
+          });
         })
         .catch((error) => console.error("Error loading albums:", error));
+
+      // Toast notification
+      function showToast() {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2000);
+      }
     </script>
 
     <!-- Dark Mode Toggle Script -->
@@ -257,6 +590,28 @@
           localStorage.setItem('darkMode', isNowDark);
         });
       })();
+    </script>
+
+    <!-- Back to Top Button Script -->
+    <script>
+      const backToTopBtn = document.getElementById('backToTop');
+
+      // Show button when scrolled down 300px
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      // Scroll to top with smooth animation
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
     </script>
   </body>
 </html>

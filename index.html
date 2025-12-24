@@ -23,7 +23,10 @@
         flex-wrap: wrap;
         gap: 2rem;
         margin-bottom: 3rem;
+        margin-top: 2rem;
         justify-content: center;
+        position: relative;
+        z-index: 0;
       }
       
       #albumOfTheDay, 
@@ -330,6 +333,85 @@
         transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       }
 
+      /* ===== STATS COUNTER ===== */
+      #stats {
+        margin: 3rem auto 0;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--dark-blue);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 400;
+      }
+
+      body.dark-mode .stat-item {
+        background: rgba(22, 33, 62, 0.6);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode .stat-item:hover {
+        box-shadow: 0 6px 20px rgba(74, 158, 255, 0.3);
+      }
+
+      body.dark-mode .stat-number {
+        color: #4a9eff;
+      }
+
+      body.dark-mode .stat-label {
+        color: #b8b8d1;
+      }
+
+      @media screen and (max-width: 736px) {
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+
+        #stats {
+          margin: 2rem auto 3rem;
+        }
+      }
+
     </style>
   </head>
   <body class="landing is-preload">
@@ -358,6 +440,24 @@
           <li><a href="albumlog.html" class="button primary">Album Reviews</a></li>
           <li><a href="albumlog.html" class="button primary">Album Log</a></li>
         </ul>
+
+        <!-- Stats Counter -->
+        <div id="stats">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number" id="totalAlbums">0</div>
+              <div class="stat-label">Albums Reviewed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" id="totalArtists">0</div>
+              <div class="stat-label">Artists</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number" id="latestAlbum">---</div>
+              <div class="stat-label">Latest Review</div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Main -->
@@ -429,6 +529,36 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="updateAlbumReviews.js"></script>
+
+    <!-- Stats Counter Script -->
+    <script>
+      // Populate stats from albums.json
+      fetch('albums.json')
+        .then(response => response.json())
+        .then(albums => {
+          // Total albums
+          document.getElementById('totalAlbums').textContent = albums.length;
+
+          // Count unique artists
+          const artists = new Set();
+          albums.forEach(album => {
+            // Extract artist from album name (assumes format: "Album by Artist")
+            const match = album.name.match(/by\s+(.+)$/i);
+            if (match) {
+              artists.add(match[1].trim());
+            }
+          });
+          document.getElementById('totalArtists').textContent = artists.size;
+
+          // Latest album (last in array)
+          if (albums.length > 0) {
+            const latest = albums[albums.length - 1];
+            const albumNumber = latest.name.match(/#(\d+)\./)?.[1] || '?';
+            document.getElementById('latestAlbum').textContent = `#${albumNumber}`;
+          }
+        })
+        .catch(error => console.error('Error loading stats:', error));
+    </script>
 
     <!-- Dark Mode Toggle Script -->
     <script>
