@@ -182,6 +182,7 @@
               album.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
             const albumsHTML = filteredAlbums
+              .reverse() // Show newest albums first
               .map(
                 (album) => {
                   // Truncate caption for preview (first 100 chars)
