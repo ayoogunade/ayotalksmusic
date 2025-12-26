@@ -76,6 +76,9 @@ async function quickAdd() {
     console.log(`  Album: #${nextNumber}. ${albumName}`);
     console.log(`  URL: ${instagramUrl}`);
     console.log(`  Image: ${cleanPath}`);
+    if (genres && genres.length > 0) {
+        console.log(`  Genre: ${genres.join(', ')}`);
+    }
     console.log('');
 
     const confirm = await question('Add this album? (y/n): ');
@@ -90,7 +93,7 @@ async function quickAdd() {
 
     // Add the album
     try {
-        await albumManager.addAlbum(albumName, instagramUrl, cleanPath);
+        await albumManager.addAlbum(albumName, instagramUrl, cleanPath, genres);
         console.log('\n✅ Done! Album added successfully.');
         console.log('\n💡 Quick tip: You can add another by running "npm run quick-add" again');
     } catch (error) {

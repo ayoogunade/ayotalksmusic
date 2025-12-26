@@ -103,7 +103,7 @@ class AlbumManager {
         };
     }
 
-    async addAlbum(albumName, instagramUrl, imagePath) {
+    async addAlbum(albumName, instagramUrl, imagePath, genres = null) {
         try {
             // Validate inputs
             if (!albumName || !instagramUrl || !imagePath) {
@@ -131,6 +131,11 @@ class AlbumManager {
                 link: instagramUrl,
                 image: imageRelativePath
             };
+
+            // Add genre if provided
+            if (genres && genres.length > 0) {
+                newAlbum.genre = genres;
+            }
 
             // Add to albums array
             albums.push(newAlbum);

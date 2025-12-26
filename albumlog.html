@@ -404,20 +404,29 @@
       const albumGrid = document.getElementById("albumGrid");
 
       // Genre detection function
-      function detectGenres(albumName, caption = '') {
+      function detectGenres(album) {
+        // Use manual genre if available (album is the full object when passed from generateAlbums)
+        if (typeof album === 'object' && album.genre && album.genre.length > 0) {
+          return album.genre.slice(0, 2);
+        }
+
+        // Fall back to auto-detection for legacy albums or when called with strings
+        const albumName = typeof album === 'object' ? album.name : album;
+        const caption = typeof album === 'object' ? (album.caption || '') : arguments[1] || '';
         const text = (albumName + ' ' + caption).toLowerCase();
         const genres = [];
 
         // Genre keywords mapping
         const genreMap = {
-          'Hip-Hop': ['hip hop', 'hip-hop', 'rap', 'kendrick', 'drake', 'eminem', 'j cole', 'tyler', 'kanye', 'jay-z', 'nas', 'tupac', 'biggie', 'joey badass', 'jid', 'freddie gibbs', 'pusha', 'asap', 'travis scott', 'playboi carti', 'lil wayne', 'future', 'migos', 'offset', 'quavo', 'chance', 'westside', 'denzel', 'earl sweatshirt', 'vince staples', 'schoolboy q', 'isaiah rashad', 'saba', 'noname', 'anderson paak', 'wiki', 'danny brown', 'madlib', 'mf doom', 'clipse', 'guevara', 'yeat', 'lil tecca'],
-          'Pop': ['pop', 'taylor swift', 'ariana', 'billie', 'dua lipa', 'harry styles', 'selena', 'justin bieber', 'justin timberlake', 'miley', 'katy perry', 'lady gaga', 'rihanna', 'beyonce', 'sabrina carpenter', 'doja cat'],
-          'R&B': ['r&b', 'rnb', 'soul', 'sza', 'frank ocean', 'the weeknd', 'bryson tiller', 'jhene', 'kehlani', 'summer walker', 'brent faiyaz', 'daniel caesar', 'partynextdoor', 'miguel', 'jorja smith', 'h.e.r', 'rochelle jordan'],
+          'Hip-Hop': ['mckinley','jmack','doechii', 'kendrick','doja', 'drake', 'eminem', 'j cole', 'tyler', 'kanye', 'jay-z', 'nas', 'tupac', 'biggie', 'joey badass', 'jid', 'freddie gibbs', 'pusha', 'asap', 'travis scott', 'playboi carti', 'lil wayne', 'future', 'migos', 'offset', 'quavo', 'chance', 'westside', 'denzel', 'earl sweatshirt', 'vince staples', 'schoolboy q', 'isaiah rashad', 'saba', 'noname', 'anderson paak', 'wiki', 'danny brown', 'madlib', 'mf doom', 'clipse', 'guevara', 'yeat', 'lil tecca'],
+          'Pop': ['rebecca','mcrae','pop', 'taylor swift', 'ariana', 'billie','doja', 'dua lipa', 'harry styles', 'selena', 'justin bieber', 'justin timberlake', 'miley', 'katy perry', 'lady gaga', 'rihanna', 'beyonce', 'sabrina carpenter', 'doja cat'],
+          'R&B': ['jennie','lorde','sailorr', 'soul', 'sza', 'frank ocean', 'the weeknd', 'bryson tiller', 'jhene', 'kehlani', 'summer walker', 'brent faiyaz', 'daniel caesar', 'partynextdoor', 'miguel', 'jorja smith', 'h.e.r'],
           'Rock': ['rock', 'indie', 'alternative', 'punk', 'grunge', 'metal', 'guitar'],
           'Electronic': ['electronic', 'edm', 'house', 'techno', 'dubstep', 'trap', 'synth'],
           'Jazz': ['jazz', 'bebop', 'swing', 'saxophone', 'trumpet'],
-          'Country': ['country', 'folk', 'americana', 'morgan wallen'],
-          'K-Pop': ['kpop', 'k-pop', 'bts', 'blackpink', 'twice', 'exo']
+          'Country': ['country', 'americana', 'morgan wallen'],
+          'K-Pop': ['kpop', 'k-pop', 'bts', 'blackpink', 'twice', 'exo'],
+          'House': ['rochelle']
         };
 
         // Check for genre matches
@@ -445,7 +454,7 @@
             // Filter by genre if selected
             if (genreFilter) {
               filteredAlbums = filteredAlbums.filter((album) => {
-                const albumGenres = detectGenres(album.name, album.caption);
+                const albumGenres = detectGenres(album);
                 return albumGenres.includes(genreFilter);
               });
             }
@@ -474,8 +483,8 @@
                     ? album.caption.substring(0, 150) + (album.caption.length > 150 ? '...' : '')
                     : '';
 
-                  // Simple genre detection based on artist/album name
-                  const genres = detectGenres(album.name, album.caption);
+                  // Genre detection (manual or auto)
+                  const genres = detectGenres(album);
                   const genreTags = genres.length > 0
                     ? `<div class="genre-tags">${genres.map(g => `<span class="genre-tag">${g}</span>`).join('')}</div>`
                     : '';
